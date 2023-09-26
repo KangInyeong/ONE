@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Samsung Electronics Co., Ltd. All Rights Reserved
+ * Copyright (c) 2023 Samsung Electronics Co., Ltd. All Rights Reserved
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,32 +14,27 @@
  * limitations under the License.
  */
 
-#ifndef LUCI_INTERPRETER_KERNELS_FLOOR_H
-#define LUCI_INTERPRETER_KERNELS_FLOOR_H
+#ifndef __Q_IMPLANT_H__
+#define __Q_IMPLANT_H__
 
-#include "core/Kernel.h"
+#include <loco.h>
 
-namespace luci_interpreter
+#include <string>
+
+namespace q_implant
 {
-namespace kernels
-{
 
-class Floor : public Kernel
+class QImplant final
 {
 public:
-  Floor(const Tensor *input, Tensor *output);
+  QImplant(const std::string &path) : _path(path) {}
 
-  const Tensor *input() const { return _inputs[0]; }
-  Tensor *output() const { return _outputs[0]; }
-
-  void configure() override;
-  void execute() const override;
+  void write(loco::Graph *g);
 
 private:
-  void evalFloat() const;
+  const std::string &_path;
 };
 
-} // namespace kernels
-} // namespace luci_interpreter
+} // namespace q_implant
 
-#endif // LUCI_INTERPRETER_KERNELS_FLOOR_H
+#endif // __Q_IMPLANT_H__

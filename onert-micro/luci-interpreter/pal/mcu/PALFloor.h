@@ -1,11 +1,12 @@
 /*
  * Copyright (c) 2023 Samsung Electronics Co., Ltd. All Rights Reserved
+ * Copyright 2017 The TensorFlow Authors. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *    http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,29 +15,13 @@
  * limitations under the License.
  */
 
-#include "exec/train/optimizer/OptimizerCode.h"
+#ifndef LUCI_INTERPRETER_PAL_FLOOR_H
+#define LUCI_INTERPRETER_PAL_FLOOR_H
 
-#include <unordered_map>
+#include "PALFloorCommon.h"
 
-namespace onert
+namespace luci_interpreter_pal
 {
-namespace exec
-{
-namespace train
-{
-namespace optimizer
-{
+} // namespace luci_interpreter_pal
 
-std::string toString(OptimizerCode code)
-{
-  static const std::unordered_map<OptimizerCode, const char *> map{
-    {OptimizerCode::Invalid, "Invalid"},
-    {OptimizerCode::SGD, "SGD"},
-    {OptimizerCode::Adam, "Adam"}};
-  return map.at(code);
-}
-
-} // namespace optimizer
-} // namespace train
-} // namespace exec
-} // namespace onert
+#endif // LUCI_INTERPRETER_PAL_FLOOR_H
